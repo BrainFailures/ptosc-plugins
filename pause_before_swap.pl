@@ -20,9 +20,12 @@ sub init {
 sub before_swap_tables {
     my ($self, %args) = @_ ;
 
+    my $counter = 0 ;
     while ( -e "/tmp/pause_alter" ) {
-        print "Alter is paused. Delete /tmp/pause_alter to trigger the final stage.\n" ;
-        sleep 1 ;
+        if ( $counter % 5 ) {
+            print "Alter is paused. Delete /tmp/pause_alter to trigger the final stage.\n" ;
+            sleep 1 ;
+        }
     }
 
     print "/tmp/pause_alter does not exist or was removed. Resuming alter process.\n" ;
