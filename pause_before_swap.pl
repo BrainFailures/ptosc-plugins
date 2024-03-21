@@ -26,6 +26,7 @@ sub before_swap_tables {
             print "Alter is paused. Delete /tmp/pause_alter to trigger the final stage.\n" ;
             sleep 1 ;
         }
+        $counter++ ;
     }
 
     print "/tmp/pause_alter does not exist or was removed. Resuming alter process.\n" ;
